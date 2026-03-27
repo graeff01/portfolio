@@ -36,14 +36,14 @@ window.addEventListener('scroll', revealCards);
 window.addEventListener('load', revealCards);
 
 // =============================================
-// ABOUT - ANIMATED COUNTERS
+// STATS STRIP - ANIMATED COUNTERS
 // =============================================
-const highlightNumbers = document.querySelectorAll('.highlight-number[data-target]');
+const highlightNumbers = document.querySelectorAll('.stat-strip-number[data-target]');
 let countersAnimated = false;
 
 function animateHighlights() {
   if (countersAnimated) return;
-  const aboutSection = document.querySelector('.about');
+  const aboutSection = document.querySelector('.stats-strip');
   if (!aboutSection) return;
 
   const rect = aboutSection.getBoundingClientRect();
@@ -68,30 +68,29 @@ function animateHighlights() {
 window.addEventListener('scroll', animateHighlights);
 
 // =============================================
-// SKILLS - REVEAL ON SCROLL
+// EXPERIENCE TIMELINE - ANIMATIONS
 // =============================================
-const skillCategories = document.querySelectorAll('.skill-category');
+const timelineLine = document.querySelector('.timeline-line');
+const timelineCards = document.querySelectorAll('.timeline-card');
 
-function revealSkills() {
-  skillCategories.forEach((cat, index) => {
-    const rect = cat.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.9) {
-      setTimeout(() => {
-        cat.style.opacity = '1';
-        cat.style.transform = 'translateY(0)';
-      }, index * 100);
+const timelineObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      if (entry.target === timelineLine) {
+        timelineLine.classList.add('grow');
+      } else {
+        entry.target.classList.add('reveal');
+      }
+      timelineObserver.unobserve(entry.target);
     }
   });
-}
+}, { threshold: 0.15 });
 
-// Initial state
-skillCategories.forEach((cat) => {
-  cat.style.opacity = '0';
-  cat.style.transform = 'translateY(20px)';
-  cat.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+if (timelineLine) timelineObserver.observe(timelineLine);
+timelineCards.forEach((card, i) => {
+  card.style.transitionDelay = `${i * 0.15}s`;
+  timelineObserver.observe(card);
 });
-
-window.addEventListener('scroll', revealSkills);
 
 // =============================================
 // PARALLAX HERO PHOTO
