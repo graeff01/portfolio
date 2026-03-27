@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.bazil.fr)",
+      "Bash(curl -s \"https://api.github.com/users/graeff01/repos?sort=updated&per_page=30\")",
+      "Bash(ls -la \"/c/Users/PICHAU/OneDrive/Área de Trabalho/portfólio/\"*.png)",
+      "Bash(ls -la \"/c/Users/PICHAU/OneDrive/Área de Trabalho/portfólio/\"*.jpg)",
+      "Bash(ls -la \"/c/Users/PICHAU/OneDrive/Área de Trabalho/portfólio/\"*.jpeg)",
+      "Bash(curl -s \"https://api.github.com/repos/graeff01/vellarys/languages\")",
+      "Bash(node -e \"let d='''''''';process.stdin.on\\(''''data'''',c=>d+=c\\);process.stdin.on\\(''''end'''',\\(\\)=>console.log\\(d\\)\\)\")",
+      "Bash(curl -s \"https://api.github.com/users/graeff01\")",
+      "Bash(node -e \"let d='''''''';process.stdin.on\\(''''data'''',c=>d+=c\\);process.stdin.on\\(''''end'''',\\(\\)=>{const u=JSON.parse\\(d\\);console.log\\(''''Name:'''',u.name\\);console.log\\(''''Bio:'''',u.bio\\);console.log\\(''''Company:'''',u.company\\);console.log\\(''''Location:'''',u.location\\);console.log\\(''''Blog:'''',u.blog\\);console.log\\(''''Public repos:'''',u.public_repos\\);console.log\\(''''Followers:'''',u.followers\\);console.log\\(''''Created:'''',u.created_at\\)}\\)\")",
+      "Bash(curl -s \"https://raw.githubusercontent.com/graeff01/graeff01/main/README.md\")"
+    ]
+  }
+}
